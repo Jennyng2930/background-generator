@@ -1,31 +1,27 @@
-function sayHello(){
-	console.log ("hello"); 
+var css = document.querySelector("h3");
+var color1 = document.querySelector(".color1");
+var color2 = document.querySelector(".color2");
+var body = document.getElementById("gradient");
+var button = document.querySelector("#colorGenerator");
+
+
+function setGradient(){
+	body.style.background = "linear-gradient(to right, "+ color1.value + ", " + color2.value +"  )";
+	css.textContent = body.style.background;
 }
+setGradient();
 
-sayHello();
+color1.addEventListener("input", setGradient);
 
-
-var bye = function(){
-	console.log("Bye");
-}
-
-bye();
-
-function multiply(a,b){
-	// if (a>10 || b>10){
-	// 	return "that is too hard";
-	// } else {
-	// 	return a*b;
-	// }
-	return a*b;
-}
-
-multiply(12,3);
+color2.addEventListener("input",setGradient);
 
 
-function divide(c,d){
-	return c/d;
-}
+function createColor(){
+	color1.value = '#' + Math.random().toString(16).substr(2,6);
+	color2.value = '#' + Math.random().toString(16).substr(2,6);
+	setGradient();
+};
 
-divide();
+
+button.addEventListener("click", createColor);
 
